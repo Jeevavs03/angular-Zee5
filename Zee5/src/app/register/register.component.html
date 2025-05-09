@@ -1,0 +1,38 @@
+<main>
+    <section class="login-section
+    ">
+    <h1>
+        Create new account 
+    </h1>
+    <p>
+        Create an account to continue enjoying uninterrupted video and personalised experience
+    </p>
+    <div class="social-login">
+        <button aria-label="Login with Google"><img style="border-radius: 50%;height: 50px;width: 50px;" src="assets/google.png" alt="Google"></button>
+        <button aria-label="Login with Facebook"><img style="height:55px;width: 55px;" src="assets/facebook.png" alt="Facebook"></button>
+        <button aria-label="Login with Twitter"><img style="height: 55px;width: 55px;" src="assets/twitter.png" alt="Twitter"></button>
+        <button aria-label="Login with Apple"><img style="border-radius: 50%;height: 50px;width: 50px;" src="assets/mac-os.png" alt="Apple"></button>
+      </div>
+      <div class="or-divide">
+        <span><div class="outer-side"><p>or</p></div></span>
+        </div>
+      <form action="" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input type="text" formControlName="emailOrPhone" [ngStyle]="{'border-color': userForm.controls['emailOrPhone'].invalid && userForm.controls['emailOrPhone'].touched ? 'red' : ''}"  placeholder="Enter Email or Phone number" >
+          <label for="inputValue" *ngIf="userForm.controls['emailOrPhone']?.invalid && userForm.controls['emailOrPhone'].touched">{{showError()}}</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="checkDefault" >
+          <label class="form-check-label" for="checkDefault">
+            By proceeding you agree to our <a href="#">Terms of Services</a> & <a href="#">Privacy Policy.</a>
+          </label>
+        </div>
+        <div class="button">
+          <button  [disabled]="!userForm.valid" [ngStyle]="{'background-color': userForm.invalid ? '#c097e2' : '', 'cursor': userForm.invalid ? 'not-allowed' : 'pointer'}" type="submit" (click)="sendMessage()">Create account</button>
+        </div>
+        <p>Already registered? <a routerLink="/login">Login</a></p>
+      </form>
+      
+    </section>
+ 
+</main>
